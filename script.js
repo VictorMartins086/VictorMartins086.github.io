@@ -1,5 +1,8 @@
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY"); // Você precisará substituir por sua chave pública
+    
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -70,36 +73,41 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(skillsSection);
     }
 
-    // Form submission
-    const contactForm = document.querySelector('.contact-form');
+    // Form submission with EmailJS
+    const contactForm = document.querySelector('#contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const name = this.querySelector('#name').value;
-            const email = this.querySelector('#email').value;
-            const message = this.querySelector('#message').value;
-
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-
-            // Simulate form submission
-            const submitBtn = this.querySelector('.btn-primary');
+            const submitBtn = document.querySelector('#submit-btn');
             const originalText = submitBtn.textContent;
+            
+            // Mostrar loading
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
-
-            setTimeout(() => {
-                alert('Mensagem enviada com sucesso! Retornarei em breve.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            
+            // Parâmetros do template
+            const templateParams = {
+                from_name: document.querySelector('#name').value,
+                from_email: document.querySelector('#email').value,
+                message: document.querySelector('#message').value,
+                to_email: 'martinsvictor086@gmail.com'
+            };
+            
+            // Enviar email usando EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Mensagem enviada com sucesso! Retornarei em breve.');
+                    contactForm.reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente pelo email.');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 
