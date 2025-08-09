@@ -277,8 +277,8 @@ body {
 }
 
 .floating-elements {
-    position: absolute;
-    top: 0;
+    position: regular;
+    top: 3;
     left: 0;
     right: 0;
     bottom: 0;
@@ -309,7 +309,7 @@ body {
 
 .float-element.js {
     bottom: 20%;
-    left: -20%;
+    left: -5%;
     animation-delay: 2s;
 }
 
