@@ -1,7 +1,7 @@
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // Você precisará substituir por sua chave pública
+    // Inicializar EmailJS com sua chave
+    emailjs.init("lsHR0tgzYLjWcp29_");
     
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Enviar email usando EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_vhq09mr', 'template_244snmb', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     alert('Mensagem enviada com sucesso! Retornarei em breve.');
