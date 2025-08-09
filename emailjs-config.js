@@ -27,9 +27,9 @@ Enviado automaticamente do seu portfolio
 
 // SUBSTITUA ESTAS CHAVES PELAS SUAS CHAVES DO EMAILJS:
 const EMAILJS_CONFIG = {
-    PUBLIC_KEY: "YOUR_PUBLIC_KEY",        // Sua chave pública do EmailJS
-    SERVICE_ID: "YOUR_SERVICE_ID",        // ID do serviço de email (ex: service_gmail)
-    TEMPLATE_ID: "YOUR_TEMPLATE_ID"       // ID do template que você criar
+    PUBLIC_KEY: "lsHR0tgzYLjWcp29_",        // Sua chave pública do EmailJS
+    SERVICE_ID: "service_vhq09mr",        // ID do serviço de email (ex: service_gmail)
+    TEMPLATE_ID: "template_244snmb"       // ID do template que você criar
 };
 
 // Como obter as chaves:
